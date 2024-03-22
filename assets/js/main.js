@@ -43,17 +43,23 @@ function deployProcess() {
     bpmnModeler.saveXML({ format: false }, (err, xml) => {
         const form = new FormData();
         console.log(xml);
+        var blob = new Blob([xml], { type: 'text/plain' });
+        var file = new File([blob], "pizza.bpmn", {type: "text/plain"});
+
         form.append("name", "pizza");
-        form.append("bpmn", new Blob([xml]));
-        axios.post('http://localhost:8080/v1/api/processes', {
+        form.append("bpmn", file);
+        const options = {
+            method: 'POST',
+            body: form,
             headers: {
                 'Authorization': 'Bearer SANDTOKEN_test',
                 'X-Coupa-Customer-FQDN': 'pizzadehut.coupadev.com',
                 'X-Coupa-Customer-Id': 'pizza-de-hut-007',
             }
-        })
+        }
+        fetch('http://localhost:8080/api/v1/processes', options)
             .then((response) => {
-                console.log(response.data);
+                console.log(response);
             })
     })
 }
