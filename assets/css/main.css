@@ -1,0 +1,11 @@
+.control-button-group {
+    padding: 10px 0;
+}
+.control-button {
+    margin-left: 10px
+}
+
+#canvas {
+    margin: 10px;
+    border: 1px solid black;
+}
