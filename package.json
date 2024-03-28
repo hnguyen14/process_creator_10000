@@ -1,32 +1,14 @@
 {
-  "name": "bpmn-js-example-properties-panel",
+  "name": "process-creator-10000",
   "version": "0.0.0",
-  "description": "A bpmn-js modeler + properties panel example",
   "scripts": {
-    "all": "run-s build",
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server --static=public --open",
-    "start": "run-s dev"
+    "dev": "npx webpack --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpmn-io/bpmn-js-examples",
-    "directory": "properties-panel"
+    "url": "https://github.com/hnguyen14/process_creator_10000",
+    "directory": "/"
   },
-  "keywords": [
-    "bpmnjs-example",
-    "bpmn-js-properties-panel"
-  ],
-  "author": {
-    "name": "Nico Rehwaldt",
-    "url": "https://github.com/nikku"
-  },
-  "contributors": [
-    {
-      "name": "bpmn.io contributors",
-      "url": "https://github.com/bpmn-io"
-    }
-  ],
   "license": "MIT",
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.13.0",
