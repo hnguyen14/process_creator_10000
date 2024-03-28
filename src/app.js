@@ -8,13 +8,11 @@ import "./style.less";
 
 import $ from "jquery";
 import BpmnModeler from "bpmn-js/lib/Modeler";
-import axios from "axios";
-
-import { debounce } from "min-dash";
 
 import {
   BpmnPropertiesPanelModule,
   BpmnPropertiesProviderModule,
+  CamundaPlatformPropertiesProviderModule,
 } from "bpmn-js-properties-panel";
 
 import diagramXML from "../resources/newDiagram.bpmn";
@@ -28,7 +26,11 @@ var bpmnModeler = new BpmnModeler({
   propertiesPanel: {
     parent: "#js-properties-panel",
   },
-  additionalModules: [BpmnPropertiesPanelModule, BpmnPropertiesProviderModule],
+  additionalModules: [
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule,
+    CamundaPlatformPropertiesProviderModule,
+  ],
 });
 
 function createNewProcess() {
