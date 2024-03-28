@@ -50,9 +50,9 @@ function loadProcess() {
     });
 }
 
-function deployProcess() {
-  bpmnModeler.saveXML({ format: false }, (err, xml) => {
-    console.log(xml);
+async function deployProcess() {
+  try {
+    const { xml } = await bpmnModeler.saveXML({ format: false });
     const options = {
       method: "POST",
       body: xml,
@@ -69,7 +69,9 @@ function deployProcess() {
         console.log(response);
       }
     );
-  });
+  } catch (err) {
+    alert(`Failed to deploy because of err: ${err.message}`);
+  }
 }
 
 async function openDiagram(xml) {
@@ -99,5 +101,12 @@ $(function () {
     e.preventDefault();
 
     loadProcess();
+  });
+
+  $("#js-deploy-process").click(function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("-----here");
+    deployProcess();
   });
 });
