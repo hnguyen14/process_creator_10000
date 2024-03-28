@@ -15,6 +15,8 @@ import {
   CamundaPlatformPropertiesProviderModule,
 } from "bpmn-js-properties-panel";
 
+import CamundaModdle from "camunda-bpmn-moddle/resources/camunda.json";
+
 import diagramXML from "../resources/newDiagram.bpmn";
 
 var container = $("#js-drop-zone");
@@ -31,6 +33,9 @@ var bpmnModeler = new BpmnModeler({
     BpmnPropertiesProviderModule,
     CamundaPlatformPropertiesProviderModule,
   ],
+  moddleExtensions: {
+    camunda: CamundaModdle,
+  },
 });
 
 function createNewProcess() {
