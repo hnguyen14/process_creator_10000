@@ -1,0 +1,14 @@
+{
+  "name": "process_creator_10000",
+  "version": "1.0.0",
+  "description": "POC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bpmn-js-properties-panel": "^5.14.0"
+  }
+}
