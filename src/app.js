@@ -1,21 +1,25 @@
-import "bpmn-js/dist/assets/diagram-js.css";
-import "bpmn-js/dist/assets/bpmn-js.css";
+// import "bpmn-js/dist/assets/diagram-js.css";
+// import "bpmn-js/dist/assets/bpmn-js.css";
 
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
-import "@bpmn-io/properties-panel/assets/properties-panel.css";
+// import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
+// import "@bpmn-io/properties-panel/assets/properties-panel.css";
 
 import "./style.less";
 
 import $ from "jquery";
-import BpmnModeler from "bpmn-js/lib/Modeler";
+// import BpmnModeler from "bpmn-js/lib/Modeler";
 
-import {
-  BpmnPropertiesPanelModule,
-  BpmnPropertiesProviderModule,
-  CamundaPlatformPropertiesProviderModule,
-} from "bpmn-js-properties-panel";
+import BpmnModeler from "camunda-bpmn-js/lib/camunda-platform/Modeler";
 
-import CamundaModdle from "camunda-bpmn-moddle/resources/camunda.json";
+import "camunda-bpmn-js/dist/assets/camunda-platform-modeler.css";
+
+// import {
+//   BpmnPropertiesPanelModule,
+//   BpmnPropertiesProviderModule,
+//   CamundaPlatformPropertiesProviderModule,
+// } from "bpmn-js-properties-panel";
+
+// import CamundaModdle from "camunda-bpmn-moddle/resources/camunda.json";
 
 import diagramXML from "../resources/newDiagram.bpmn";
 
@@ -28,14 +32,14 @@ var bpmnModeler = new BpmnModeler({
   propertiesPanel: {
     parent: "#js-properties-panel",
   },
-  additionalModules: [
-    BpmnPropertiesPanelModule,
-    BpmnPropertiesProviderModule,
-    CamundaPlatformPropertiesProviderModule,
-  ],
-  moddleExtensions: {
-    camunda: CamundaModdle,
-  },
+  // additionalModules: [
+  //   BpmnPropertiesPanelModule,
+  //   BpmnPropertiesProviderModule,
+  //   CamundaPlatformPropertiesProviderModule,
+  // ],
+  // moddleExtensions: {
+  //   camunda: CamundaModdle,
+  // },
 });
 
 function createNewProcess() {
@@ -59,6 +63,7 @@ function loadProcess() {
 
 async function deployProcess() {
   try {
+    console.log(JSON.parse(JSON.stringify(bpmnModeler.getDefinitions())));
     const { xml } = await bpmnModeler.saveXML({ format: false });
     const options = {
       method: "POST",
